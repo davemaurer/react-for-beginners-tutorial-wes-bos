@@ -1,5 +1,10 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var ReactRouter = require('react-router');
+var Router = ReactRouter.Router;
+var Route = ReactRouter.Route;
+var Navigation = ReactRouter.Navigation;
+var createBrowserHistory = require('history/lib/createBrowserHistory');
 
 /*
   App
@@ -78,8 +83,8 @@ var StorePicker = React.createClass({
         {/* React uses single curly brackets for variable insertion - no interpolation syntax needed
         also need the format displayed here to make a comment while inside of a React component, otherwise
         the text will be displayed to the browser page */}
+        {/* using required in the line below forces user input before allowing submission */}
         <input type="text" ref="storeId" required />
-        {/* using required in the line above forces user input before allowing submission */}
         <input type="Submit" />
       </form>
     )
@@ -87,4 +92,26 @@ var StorePicker = React.createClass({
 
 });
 
-ReactDOM.render(<App/>, document.querySelector('#main'));
+/*
+Not Found
+ */
+
+var NotFound = React.createClass({
+  render : function() {
+    return <h1>Not Found!</h1>
+  }
+});
+
+/*
+Routes
+ */
+
+var routes = (
+  <Router history={createBrowserHistory()}>
+    <Router path="/" component={StorePicker}/>
+    <Router path="/store/:storeId" component={App}/>
+    <Router path="*" component={NotFound}/>
+  </Router>
+);
+
+ReactDOM.render(routes, document.querySelector('#main'));
