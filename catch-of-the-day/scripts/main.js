@@ -6,6 +6,8 @@ var Route = ReactRouter.Route;
 var Navigation = ReactRouter.Navigation;
 var createBrowserHistory = require('history/lib/createBrowserHistory');
 
+var h = require('./helpers');
+
 /*
   App
 */
@@ -84,7 +86,7 @@ var StorePicker = React.createClass({
         also need the format displayed here to make a comment while inside of a React component, otherwise
         the text will be displayed to the browser page */}
         {/* using required in the line below forces user input before allowing submission */}
-        <input type="text" ref="storeId" required />
+        <input type="text" ref="storeId" defaultValue={h.getFunName()} required />
         <input type="Submit" />
       </form>
     )
