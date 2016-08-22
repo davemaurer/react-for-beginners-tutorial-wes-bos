@@ -11,6 +11,7 @@ var createBrowserHistory = require('history/lib/createBrowserHistory');
 var h = require('./helpers');
 
 // Firebase
+
 var Rebase = require('re-base');
 var base = Rebase.createClass('https://catch-of-the-day-d10e0.firebaseio.com/');
 
