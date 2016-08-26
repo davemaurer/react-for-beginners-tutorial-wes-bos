@@ -3,9 +3,12 @@
  */
 
 import React from 'react';
+import autobind from 'autobind-decorator';
 
-var AddFishForm = React.createClass({
-  createFish: function(event) {
+@autobind
+class AddFishForm extends React.Component {
+
+  createFish(event) {
     // Stop the form from submitting
     event.preventDefault();
     // Take the data from the form and create an object
@@ -18,8 +21,10 @@ var AddFishForm = React.createClass({
     };
     // Add new fish to the App State
     this.props.addFish(fish);
-  },
-  render: function() {
+    this.refs.fishForm.reset();
+  }
+
+  render() {
     return (
       <form className="fish-edit" onSubmit={this.createFish}>
         <input type="text" ref="name" placeholder="Fish Name"/>
@@ -34,6 +39,7 @@ var AddFishForm = React.createClass({
       </form>
     )
   }
-});
+
+}
 
 export default AddFishForm;
