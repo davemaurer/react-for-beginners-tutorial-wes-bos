@@ -43,7 +43,6 @@ class Order extends React.Component {
       if (fish && isAvailable) {
         return prevTotal + (count * parseInt(fish.price) || 0);
       }
-
       return prevTotal;
     }, 0);
 
@@ -68,6 +67,7 @@ class Order extends React.Component {
       </div>
     )
   }
+  
 }
 
 Order.propTypes = {

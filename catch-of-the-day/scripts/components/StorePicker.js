@@ -33,6 +33,7 @@ class StorePicker extends React.Component {
       </form>
     )
   }
+  
 }
 
 reactMixin.onClass(StorePicker, History);
